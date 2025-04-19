@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TVH PRO WebApp</title>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.Telegram && window.Telegram.WebApp) {
+        Telegram.WebApp.ready();
+        const user = Telegram.WebApp.initDataUnsafe?.user;
+        document.getElementById('welcome').textContent =
+          user ? `Привет, ${user.first_name} 👋` : 'Добро пожаловать!';
+      }
+    });
+  </script>
+</head>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;background:#0f172a;color:#fff;">
+  <h1 id="welcome">Загрузка...</h1>
+</body>
+</html>
