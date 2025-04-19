@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>TVH PRO – E&A</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      * {
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-      }
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: #121212;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        flex-direction: column;
-      }
-      .loader {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
-      .welcome {
-        font-size: 1.8rem;
-        font-weight: bold;
-        display: none;
-      }
-    </style>
-    <script>
-      window.onload = function () {
-        const tg = window.Telegram.WebApp;
-        const loader = document.querySelector(".loader");
-        const welcome = document.querySelector(".welcome");
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TVH PRO — E&A</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      font-family: sans-serif;
+    }
+    .loader {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .welcome {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">Загрузка...</div>
+  <div class="welcome"></div>
 
-        if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
-          const name = tg.initDataUnsafe.user.first_name;
-          welcome.textContent = `Добро пожаловать, ${name}!`;
-        } else {
-          welcome.textContent = "Добро пожаловать в TVH PRO!";
-        }
+  <script>
+    window.onload = function () {
+      const tg = window.Telegram.WebApp;
+      const loader = document.querySelector(".loader");
+      const welcome = document.querySelector(".welcome");
 
-        loader.style.display = "none";
-        welcome.style.display = "block";
+      if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+        const name = tg.initDataUnsafe.user.first_name;
+        welcome.textContent = `Добро пожаловать, ${name}!`;
+      } else {
+        welcome.textContent = "Добро пожаловать в TVH PRO!";
+      }
 
-        tg.ready();
-      };
-    </script>
-  </head>
-  <body>
-    <div class="loader">Загрузка...</div>
-    <div class="welcome"></div>
-  </body>
+      loader.style.display = "none";
+      welcome.style.display = "block";
+
+      if (tg) tg.ready();
+    };
+  </script>
+</body>
 </html>
