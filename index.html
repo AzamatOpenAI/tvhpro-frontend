@@ -33,8 +33,10 @@
   <div class="welcome"></div>
 
   <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready(); // Вызов должен быть до использования initDataUnsafe
+
     window.onload = function () {
-      const tg = window.Telegram.WebApp;
       const loader = document.querySelector(".loader");
       const welcome = document.querySelector(".welcome");
 
@@ -47,8 +49,6 @@
 
       loader.style.display = "none";
       welcome.style.display = "block";
-
-      if (tg) tg.ready();
     };
   </script>
 </body>
